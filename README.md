@@ -3,9 +3,9 @@
 
 # 🏨 Hotel Management System
 
-Welcome to our Hotel Management System project! This application is built using **Java (Swing)** for the frontend, **MySQL** for the database, and follows a clean, modular architecture to manage hotel operations like room reservations, billing, and inventory tracking.
+Welcome to our Hotel Management System project! This computer program is coded in Java (Swing) as the front-end, MySQL as the database, and features a simple, modular design to manage hotel operations like room reservations, billing, and inventory control.
 
-This project is a collaborative effort between three team members, each responsible for a core area of the system: **Database Design**, **Backend Logic**, and **User Interface Development**.
+This project was a three-member team effort with each of us working on a main area of the system: Database Design, Backend Logic, and User Interface Development.
 
 ---
 
@@ -47,7 +47,7 @@ Key features:
 ### 🔹 Part 3: User Interface Development
 **Assigned to: Samardeep**
 
-This part is responsible for building the graphical user interface using Java Swing.
+This part is responsible for developing the graphical user interface using Java Swing.
 
 Includes:
 - GUI layouts for key modules like Reservations, Rooms, Inventory, and Billing
