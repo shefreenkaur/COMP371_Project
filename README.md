@@ -74,7 +74,7 @@ Includes:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/hotel-management-system.git
+   git clone https://github.com/shefreenkaur/COMP371_Project.git
    ```
 2. Follow setup guides in each module's folder:
    - **Database Setup:** `database/README.md`
