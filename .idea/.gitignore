@@ -1,0 +1,5 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Database configuration
+config/database.properties
