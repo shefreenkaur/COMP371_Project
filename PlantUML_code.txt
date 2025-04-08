@@ -1,0 +1,166 @@
+@startuml Hotel_Management_System_ER_Diagram
+
+!define Table(name,desc) class name as "desc" << (T,#FFAAAA) >>
+!define primary_key(x) <b>x</b>
+!define foreign_key(x) <u>x</u>
+!define unique(x) <color:green>x</color>
+!define not_null(x) <color:blue>x</color>
+
+' Tables
+Table(users, "users") {
+  primary_key(user_id) INT
+  unique(username) VARCHAR(50) not_null
+  not_null(password) VARCHAR(255)
+  not_null(full_name) VARCHAR(100)
+  not_null(role) ENUM
+  unique(email) VARCHAR(100)
+  phone VARCHAR(20)
+  created_at TIMESTAMP
+}
+
+Table(room_types, "room_types") {
+  primary_key(type_id) INT
+  unique(name) VARCHAR(50) not_null
+  description TEXT
+  not_null(base_price) DECIMAL(10,2)
+  not_null(capacity) INT
+  amenities TEXT
+}
+
+Table(rooms, "rooms") {
+  primary_key(room_id) INT
+  unique(room_number) VARCHAR(10) not_null
+  foreign_key(type_id) INT not_null
+  not_null(floor) INT
+  status ENUM
+  last_cleaned DATETIME
+  notes TEXT
+}
+
+Table(guests, "guests") {
+  primary_key(guest_id) INT
+  not_null(first_name) VARCHAR(50)
+  not_null(last_name) VARCHAR(50)
+  unique(email) VARCHAR(100)
+  phone VARCHAR(20)
+  address TEXT
+  id_type VARCHAR(50)
+  id_number VARCHAR(50)
+  notes TEXT
+  created_at TIMESTAMP
+}
+
+Table(reservations, "reservations") {
+  primary_key(reservation_id) INT
+  foreign_key(guest_id) INT not_null
+  not_null(check_in_date) DATE
+  not_null(check_out_date) DATE
+  status ENUM
+  not_null(total_guests) INT
+  special_requests TEXT
+  foreign_key(created_by) INT
+  created_at TIMESTAMP
+  updated_at TIMESTAMP
+}
+
+Table(reservation_rooms, "reservation_rooms") {
+  primary_key(id) INT
+  foreign_key(reservation_id) INT not_null
+  foreign_key(room_id) INT not_null
+  not_null(rate_per_night) DECIMAL(10,2)
+}
+
+Table(inventory_categories, "inventory_categories") {
+  primary_key(category_id) INT
+  unique(name) VARCHAR(50) not_null
+  description TEXT
+}
+
+Table(inventory_items, "inventory_items") {
+  primary_key(item_id) INT
+  foreign_key(category_id) INT not_null
+  not_null(name) VARCHAR(100)
+  description TEXT
+  not_null(unit) VARCHAR(20)
+  not_null(current_quantity) INT
+  not_null(min_quantity) INT
+  cost_per_unit DECIMAL(10,2)
+  supplier VARCHAR(100)
+  last_restocked DATETIME
+}
+
+Table(inventory_transactions, "inventory_transactions") {
+  primary_key(transaction_id) INT
+  foreign_key(item_id) INT not_null
+  not_null(quantity) INT
+  not_null(transaction_type) ENUM
+  related_to VARCHAR(50)
+  related_id INT
+  notes TEXT
+  foreign_key(performed_by) INT
+  transaction_date TIMESTAMP
+}
+
+Table(services, "services") {
+  primary_key(service_id) INT
+  unique(name) VARCHAR(100) not_null
+  description TEXT
+  not_null(price) DECIMAL(10,2)
+  category VARCHAR(50)
+}
+
+Table(billing, "billing") {
+  primary_key(bill_id) INT
+  foreign_key(reservation_id) INT not_null
+  not_null(total_amount) DECIMAL(10,2)
+  discount_amount DECIMAL(10,2)
+  tax_amount DECIMAL(10,2)
+  not_null(grand_total) DECIMAL(10,2)
+  payment_status ENUM
+  payment_method VARCHAR(50)
+  billing_date TIMESTAMP
+  notes TEXT
+  foreign_key(created_by) INT
+}
+
+Table(bill_items, "bill_items") {
+  primary_key(item_id) INT
+  foreign_key(bill_id) INT not_null
+  not_null(item_type) ENUM
+  not_null(description) VARCHAR(255)
+  not_null(quantity) INT
+  not_null(unit_price) DECIMAL(10,2)
+  not_null(total_price) DECIMAL(10,2)
+  date_added TIMESTAMP
+}
+
+Table(housekeeping_tasks, "housekeeping_tasks") {
+  primary_key(task_id) INT
+  foreign_key(room_id) INT not_null
+  not_null(task_type) ENUM
+  status ENUM
+  foreign_key(assigned_to) INT
+  not_null(scheduled_date) DATETIME
+  completed_date DATETIME
+  notes TEXT
+  foreign_key(created_by) INT
+  created_at TIMESTAMP
+}
+
+' Relationships
+room_types "1" -- "0..*" rooms : has
+guests "1" -- "0..*" reservations : makes
+users "1" -- "0..*" reservations : creates
+reservations "1" -- "1..*" reservation_rooms : contains
+rooms "1" -- "0..*" reservation_rooms : assigned to
+inventory_categories "1" -- "0..*" inventory_items : categorizes
+inventory_items "1" -- "0..*" inventory_transactions : has
+users "1" -- "0..*" inventory_transactions : performs
+reservations "1" -- "0..1" billing : billed to
+users "1" -- "0..*" billing : creates
+billing "1" -- "0..*" bill_items : contains
+rooms "1" -- "0..*" housekeeping_tasks : needs
+users "1" -- "0..*" housekeeping_tasks : assigned to
+users "1" -- "0..*" housekeeping_tasks : creates
+
+@enduml
