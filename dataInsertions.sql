@@ -1,0 +1,47 @@
+-- ALTER TABLE rooms ADD COLUMN room_type VARCHAR(50);
+	-- CREATE TABLE inventory (
+	--     item_id INT AUTO_INCREMENT PRIMARY KEY,
+	--     name VARCHAR(100) NOT NULL,
+	--     category VARCHAR(50) NOT NULL,
+	--     quantity INT NOT NULL DEFAULT 0,
+	--     unit_cost DOUBLE NOT NULL,
+	--     supplier VARCHAR(100),
+	--     last_ordered DATE,
+	--     reorder_level INT NOT NULL DEFAULT 10
+	-- );
+	-- CREATE TABLE IF NOT EXISTS inventory_log (
+	--     log_id INT AUTO_INCREMENT PRIMARY KEY,
+	--     item_id INT NOT NULL,
+	--     change_amount INT NOT NULL,
+	--     change_date DATE NOT NULL,
+	--     notes TEXT,
+	--     FOREIGN KEY (item_id) REFERENCES inventory(item_id)
+	-- );
+
+	-- CREATE TABLE IF NOT EXISTS inventory_categories (
+	--     category_id INT AUTO_INCREMENT PRIMARY KEY,
+	--     category_name VARCHAR(50) NOT NULL UNIQUE
+	-- );
+
+	-- CREATE TABLE IF NOT EXISTS suppliers (
+	--     supplier_id INT AUTO_INCREMENT PRIMARY KEY,
+	--     supplier_name VARCHAR(100) NOT NULL UNIQUE,
+	--     contact_name VARCHAR(100),
+	--     phone VARCHAR(20),
+	--     email VARCHAR(100),
+	--     address TEXT
+	-- );
+	-- ALTER TABLE rooms ADD COLUMN rate DOUBLE NOT NULL DEFAULT 0;
+	-- ALTER TABLE rooms ADD COLUMN capacity INT NOT NULL DEFAULT 2;-- 
+	-- ALTER TABLE rooms ADD COLUMN features TEXT;
+	-- CREATE TABLE IF NOT EXISTS invoices (
+	--     invoice_id INT AUTO_INCREMENT PRIMARY KEY,
+	--     reservation_id INT NOT NULL,
+	--     room_charges DOUBLE NOT NULL,
+	--     additional_charges DOUBLE NOT NULL DEFAULT 0,
+	--     taxes DOUBLE NOT NULL,
+	--     total_amount DOUBLE NOT NULL,
+	--     payment_status VARCHAR(20) NOT NULL DEFAULT 'Unpaid',
+	--     payment_date DATE,
+	--     FOREIGN KEY (reservation_id) REFERENCES reservations(reservation_id)
+	-- );
