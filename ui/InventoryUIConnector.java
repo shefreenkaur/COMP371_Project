@@ -25,7 +25,7 @@ public class InventoryUIConnector {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Establish connection - adjust these parameters for your database
             connection = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/hotel_management", "username", "password");
+                    "jdbc:mysql://localhost:3306/hotel_management", "root", "1234");
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null,
@@ -671,6 +671,22 @@ public class InventoryUIConnector {
 
         return null;
     }
+    public Object[][] getInventoryData(String category) {
+        return getFilteredItems(category);
+    }
+    public boolean addInventoryItem(String category, String name, String description, int quantity,
+                                    int reorderLevel, String supplier, double cost) {
+        return addItem(name, category, quantity, cost, supplier, reorderLevel);
+    }
+
+    public boolean updateInventoryItem(int itemId, String name, String description, int quantity,
+                                       int reorderLevel, String supplier, double cost) {
+        return updateItem(itemId, name, "Unknown", quantity, cost, supplier, reorderLevel);
+    }
+
+    public boolean deleteInventoryItem(int itemId) {
+        return deleteItem(itemId);
+    }
 
     /**
      * Close the database connection
@@ -683,5 +699,8 @@ public class InventoryUIConnector {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void populateItemCategoryComboBox(JComboBox<String> categoryComboBox) {
     }
 }

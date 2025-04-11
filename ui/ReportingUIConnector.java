@@ -32,7 +32,7 @@ public class ReportingUIConnector {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Establish connection - adjust these parameters for your database
             connection = java.sql.DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/hotel_management", "username", "password");
+                    "jdbc:mysql://localhost:3306/hotel_management", "root", "1234");
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null,
