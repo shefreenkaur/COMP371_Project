@@ -10,27 +10,43 @@ Our team collaborated on different components of the system:
 
 **Shefreen Kaur:**
 - Designed and implemented the complete database architecture
+  
 - Created the database schema with 13 interconnected tables
+  
 - Developed stored procedures for complex operations
+  
 - Implemented the DatabaseConnection class using the Singleton pattern
+  
 - Created the data access layer (DAL) connecting Java to MySQL
+  
 - Integrated database components with the UI
 
 
 Member 2- Samardeep – Front-End and UI/UX Developer
+
 -Designed and implemented the core UI components using Java Swing for modules such as Reservations, Room Management, and Billing
+
 -Ensured smooth navigation and a user-friendly interface across all system panels
+
 -Connected UI elements with backend logic to provide real-time updates on room availability and billing details
+
 -Applied the Observer Pattern to enable responsive inventory alerts and housekeeping status changes
+
 -Tested and refined interface elements for different user roles to ensure clarity and ease of use
 
 
 Member 3 -Paramvir – System Integration and Testing Lead
+
 -Developed core business logic classes for Reservation Management, Room Assignment, and Billing Calculations
+
 -Created and implemented additional features such as dynamic check-in/check-out processing and low-inventory alert integration
+
 -Collaborated on implementing the Factory Pattern for role-based user access management
+
 -Integrated seasonal pricing adjustments and support for group reservations
+
 -Conducted unit testing and contributed to debugging and optimization of feature workflows
+
 
 
 
