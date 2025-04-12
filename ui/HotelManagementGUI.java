@@ -266,42 +266,23 @@ public class HotelManagementGUI extends JFrame {
         reservationPanel.add(splitPane);
     }
 
-    /**
-     * Create room panel (placeholder)
-     */
     private void createRoomPanel() {
-        roomPanel = new JPanel();
-        roomPanel.setLayout(new BorderLayout());
-        roomPanel.add(new JLabel("Room Management Panel", JLabel.CENTER));
+        roomPanel = new RoomPanel();
     }
 
-    /**
-     * Create inventory panel (placeholder)
-     */
     private void createInventoryPanel() {
-        inventoryPanel = new JPanel();
-        inventoryPanel.setLayout(new BorderLayout());
-        inventoryPanel.add(new JLabel("Inventory Management Panel", JLabel.CENTER));
+        inventoryPanel = new InventoryPanel();
     }
 
-    /**
-     * Create billing panel (placeholder)
-     */
     private void createBillingPanel() {
-        billingPanel = new JPanel();
-        billingPanel.setLayout(new BorderLayout());
-        billingPanel.add(new JLabel("Billing Panel", JLabel.CENTER));
+        billingPanel = new BillingPanel();
     }
 
-    /**
-     * Create reporting panel (placeholder)
-     */
     private void createReportingPanel() {
         reportingPanel = new JPanel();
         reportingPanel.setLayout(new BorderLayout());
-        reportingPanel.add(new JLabel("Reporting Panel", JLabel.CENTER));
+        reportingPanel.add(new JLabel("Reporting features coming soon...", JLabel.CENTER));
     }
-
     /**
      * Load initial data
      */
